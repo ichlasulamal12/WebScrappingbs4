@@ -32,6 +32,8 @@ temp = temp[::-1]
 data = pd.DataFrame(temp, columns = ('date', 'kurs'))
 
 #insert data wrangling here
+data['date'] = pd.to_datetime(data['date'])
+data = data.set_index('date')
 data['kurs'] = data['kurs'].str.replace(" IDR", "")
 data['kurs'] = data['kurs'].str.replace(",", "")
 data['kurs'] = data['kurs'].astype('float64')
